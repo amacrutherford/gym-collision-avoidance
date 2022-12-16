@@ -58,7 +58,7 @@ class GA3CCADRLPolicy(InternalPolicy):
             [spd, heading change] command
 
         """
-
+        print('obs ga3c', obs, "shape", np.shape(obs["other_agents_states"]))
         pref_speed = obs['pref_speed']
         # host_agent = agents[i]
         # other_agents = agents[:i]+agents[i+1:]
@@ -74,9 +74,9 @@ class GA3CCADRLPolicy(InternalPolicy):
             vec_obs = np.expand_dims(vec_obs, axis=0)
 
         # print(obs)
-        # print(vec_obs)
+        # print('vec obs', vec_obs)
         # assert(0)
-
+        print('nn', self.nn)
         predictions = self.nn.predict_p(vec_obs)[0]
         action_index = np.argmax(predictions)
         raw_action = self.possible_actions.actions[action_index]

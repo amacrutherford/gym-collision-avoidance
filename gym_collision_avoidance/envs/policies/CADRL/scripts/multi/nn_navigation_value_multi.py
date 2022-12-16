@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import os
 import time
 import copy
+from pathlib import Path
 
 from gym_collision_avoidance.envs.policies.CADRL.scripts.neural_networks import neural_network_regr_multi as nn
 from gym_collision_avoidance.envs.policies.CADRL.scripts.neural_networks.multiagent_network_param import Multiagent_network_param
@@ -855,15 +856,15 @@ class NN_navigation_value:
         except:
             print('agent_state', agent_state)
             print('actions_theta', actions_theta)
-            print('other_agent_state', other_agent_state)
-            print('other_agent_action', other_agent_action)
+            #print('other_agent_state', other_agent_state)
+            #print('other_agent_action', other_agent_action)
             print('dt_forward', dt_forward)
             print('dists_to_goal', dists_to_goal)
             print('actions_rewerds', action_rewards)
             print('state_values', state_values)
-            print('values', action_rewards + gamma ** (dt_forward * \
-                agent_desired_speed / dt_normal) * state_values)
-            assert(0)       
+            #print('values', action_rewards + gamma ** (dt_forward * \
+            #    agent_desired_speed / dt_normal) * state_values)
+            #assert(0)       
         
         # np.set_printoptions(precision=4,formatter={'float': '{: 0.3f}'.format})
         # if True:#np.max(actions_theta[:,1]) - np.min(actions_theta[:,1]) < 1.5 * np.pi:
@@ -2067,7 +2068,7 @@ def load_NN_navigation_value(file_dir, num_agents, mode, passing_side, filename=
         sgd_step_epsilon = 0.1
 
         nn_training_param = nn.NN_training_param(sgd_step_size, reg_lambda, nb_iter, sgd_batch_size, w_scale)
-        with open(file_dir+"/../../pickle_files/multi/nn_training_param.p", "wb") as f:
+        with open(r"/home/alex/repos/gym-collision-avoidance/gym_collision_avoidance/envs/policies/CADRL/pickle_files/multi/nn_rl_training_param.p", "wb") as f:
             pickle.dump(nn_training_param, f)
 
     nn_navigation = NN_navigation_value(num_agents, nn_training_param, mode=mode, passing_side=passing_side)

@@ -246,6 +246,9 @@ class CollisionAvoidanceEnv(gym.Env):
                 all_actions[agent_index, :] = agent.policy.external_action_to_action(agent, actions[agent_index])
             else:
                 dict_obs = self.observation[agent_index]
+                #print('obs', dict_obs)
+                #print('other agent states', np.shape(dict_obs["other_agents_states"]))
+                #raise Exception()
                 all_actions[agent_index, :] = agent.policy.find_next_action(dict_obs, self.agents, agent_index)
 
         # After all agents have selected actions, run one dynamics update

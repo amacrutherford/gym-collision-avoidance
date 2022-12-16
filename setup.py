@@ -6,13 +6,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 install_requires = [
-        'tensorflow >=1.14, <2.0',
+        #'tensorflow >=1.14, <2.0',
         'Pillow',
         'PyOpenGL',
         'pyyaml',
         'matplotlib',
         'pytz',
-        'imageio==2.4.1',
+        #'imageio==2.4.1',
         'gym',
         'moviepy',
         'pandas',

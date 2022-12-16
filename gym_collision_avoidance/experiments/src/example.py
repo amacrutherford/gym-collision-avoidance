@@ -13,9 +13,14 @@ def main():
     '''
 
     # Create single tf session for all experiments
-    import tensorflow as tf
-    tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+    #import tensorflow as tf
+    #tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+    import tensorflow.compat.v1 as tf
+    tf.disable_v2_behavior()
+    tf.logging.set_verbosity(tf.compat.v1.logging.ERROR)
     tf.Session().__enter__()
+    
+    #tf.compat.v1.Session().__enter__()
 
     # Instantiate the environment
     env = gym.make("CollisionAvoidance-v0")
@@ -30,7 +35,7 @@ def main():
     env.set_agents(agents)
 
     obs = env.reset() # Get agents' initial observations
-
+    print('obs', obs)
     # Repeatedly send actions to the environment based on agents' observations
     num_steps = 100
     for i in range(num_steps):

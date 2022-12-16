@@ -64,6 +64,8 @@ def main():
                 df = pd.DataFrame()
                 for test_case in range(Config.NUM_TEST_CASES):
                     ##### Actually run the episode ##########
+                    print('test case args', test_case_args)
+                    raise Exception()
                     _ = reset_env(env, one_env, test_case_fn, test_case_args, test_case, num_agents, policies, policy, prev_agents)
                     episode_stats, prev_agents = run_episode(env, one_env)
                     df = store_stats(df, {'test_case': test_case, 'policy_id': policy}, episode_stats)

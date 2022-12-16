@@ -269,7 +269,7 @@ def cadrl_test_case_to_agents(test_case, policies='GA3C_CADRL', policy_distr=Non
     # into our new list of Agent objects. The legacy cadrl format is a list of
     # [start_x, start_y, goal_x, goal_y, pref_speed, radius] for each agent.
     ###############################
-
+    
     num_agents = np.shape(test_case)[0]
     agents = []
     if type(policies) == str:
